@@ -1,39 +1,34 @@
-import React from "react";
+import React, { FormEvent } from "react";
+import Input from "../UI/Input";
+import authService from "@/services";
 
 const LoginViewPage = () => {
+
+  const handleLogin = async(e :FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+const data ={
+    email: form.email.value,
+    password: form.password.value
+}
+   try {
+    const result = await authService.loginMember(data)
+
+    if(result.status === 200){
+        alert("login success")
+        
+    }else{
+      alert("login failed")
+    }
+   } catch (error) {
+    alert("username or password incorrect" + error)
+   }
+  }
   return (
     <div className="w-screen h-screen flex items-center">
-      <form className="max-w-sm mx-auto bg-white border rounded-md shadow-md h-3/6 w-4/6 p-4 ">
-        <div className="mb-5">
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 "
-          >
-            Your email
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2"
-            placeholder="email@gmail.com"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <label
-            htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
-            Your password
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2"
-            required
-          />
-        </div>
-
+      <form onSubmit={handleLogin} className="max-w-sm mx-auto bg-white border rounded-md shadow-md h-3/6 w-4/6 p-4 ">
+        <Input name="email" title="Email" type="email" placeholder="Enter your email" />
+        <Input name="password" title="Password" type="password" placeholder="Enter your Password" />
         <button
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

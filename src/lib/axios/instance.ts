@@ -1,37 +1,27 @@
-import axios from "axios";
-import { getSession } from "next-auth/react";
-
-const headers = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  "Cache-Control": "no-cache",
-  Expires: 0,
+const onRequest = (req: any) => {
+  return req;
 };
 
-const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers,
-});
+const onRequestError = (err: any) => {
+  return Promise.reject(err);
+};
 
-instance.interceptors.request.use(
-  async (request) => {
-    const session: any = await getSession();
-    if (!session) return request;
-    request.headers.Authorization = `Bearer ${session.accessToken}`;
-    return request;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+const onResponse = (res:any) => {
+  return res;
+};
 
-instance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+const onResponseError = (err:any) => {
+  return Promise.reject(err);
+};
 
-export default instance;
+export const setupInterceptor = (instance:any) => {
+  instance.interceptors.request.use(
+    onRequest,
+    onRequestError,
+  );
+  instance.interceptors.response.use(
+    onResponse,
+    onResponseError,
+  );
+  return instance;
+};
