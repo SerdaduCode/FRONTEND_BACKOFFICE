@@ -1,27 +1,38 @@
-const onRequest = (req: any) => {
-  return req;
+import Axios from "axios";
+import Cookies from "js-cookie";
+
+const headers = {
+  Accept: "application/json",
+  "Content-Type": "application/json",
+  "Cache-Control": "no-cache",
+  Expires: 0,
 };
 
-const onRequestError = (err: any) => {
-  return Promise.reject(err);
-};
+let instance = Axios.create({
+  baseURL: "http://localhost:8080",
+  headers,
+  timeout: 60 * 1000,
+  withCredentials: true,
+});
 
-const onResponse = (res:any) => {
-  return res;
-};
+instance.interceptors.request.use(
+  async (request) => {
+    request.headers.Authorization = `Bearer ${Cookies.get("token")}`;
+    return request;
+  },
 
-const onResponseError = (err:any) => {
-  return Promise.reject(err);
-};
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-export const setupInterceptor = (instance:any) => {
-  instance.interceptors.request.use(
-    onRequest,
-    onRequestError,
-  );
-  instance.interceptors.response.use(
-    onResponse,
-    onResponseError,
-  );
-  return instance;
-};
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+export default instance;

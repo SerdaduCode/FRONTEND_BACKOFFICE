@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,6 +19,10 @@ export default function Home() {
         <h1 className="container bg-red-500 text-3xl font-bold underline">
           Hello world!
         </h1>
+        <Link href="/login" className="underline mx-4">
+          Login
+        </Link>
+        <Link href="/register">register</Link>
       </main>
     </div>
   );
