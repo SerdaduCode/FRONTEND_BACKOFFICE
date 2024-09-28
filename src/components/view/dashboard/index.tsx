@@ -1,24 +1,17 @@
-import React from "react";
-import Cookies from "js-cookie";
-import Link from "next/link";
+import React from 'react';
+import SidebarViewPage from './sidebar';
+
 const DashboardViewPage = () => {
-  const handleLogout = () => {
-    Cookies.remove("token");
-    window.location.href = "/login";
-    const callbackUrl = new URL(window.location.href).pathname;
-    const params = new URLSearchParams({ callbackUrl });
-    window.location.href = `/login?${params.toString()}`;
-  };
   return (
     <div>
-      <p>dashboard</p>
-      <div className="flex flex-col">
-        <Link href="/dashboard/departement" className="underline">
-          Departement
-        </Link>
-        <button onClick={handleLogout} type="button">
-          logout
-        </button>
+      <div className="bg-slate-100 flex">
+        <div className="hidden md:block h-[100vh]">
+          {/* SIDEBAR  */}
+          <SidebarViewPage />
+        </div>
+        <div className="p-5 w-full md:max-w-[1140px]">
+          {/* CONTENT */}
+        </div>
       </div>
     </div>
   );
