@@ -10,7 +10,7 @@ import {
   LuLogOut,
 } from 'react-icons/lu';
 import Image from 'next/image';
-import Link from 'next/link';
+import SideMenu from '@/components/UI/SideMenu';
 
 const SidebarViewPage = () => {
   const handleLogout = () => {
@@ -40,47 +40,41 @@ const SidebarViewPage = () => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <Link
-            href="/dashboard"
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuHome size={16} /> Dashboard
-          </Link>
-          <Link
-            href=""
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuUserPlus2 size={16} />
-            Member
-          </Link>
-          <Link
-            href=""
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuUsers2 size={16} />
-            Group
-          </Link>
-          <Link
-            href=""
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuClipboardCheck size={16} />
-            Project
-          </Link>
-          <Link
-            href=""
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuCalendar size={16} />
-            Event
-          </Link>
-          <Link
-            href=""
-            className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
-          >
-            <LuSettings size={16} />
-            Settings
-          </Link>
+          <SideMenu
+            text="Dashboard"
+            path="dashboard"
+            icon={<LuHome size={16} />}
+          />
+
+          <SideMenu
+            text="Member"
+            path="member"
+            icon={<LuUserPlus2 size={16} />}
+          />
+
+          <SideMenu
+            text="Group"
+            path="group"
+            icon={<LuUsers2 size={16} />}
+          />
+
+          <SideMenu
+            text="Project"
+            path="project"
+            icon={<LuClipboardCheck size={16} />}
+          />
+
+          <SideMenu
+            text="Event"
+            path="event"
+            icon={<LuCalendar size={16} />}
+          />
+
+          <SideMenu
+            text="Settings"
+            path="settings"
+            icon={<LuSettings size={16} />}
+          />
         </div>
 
         <div className="">
