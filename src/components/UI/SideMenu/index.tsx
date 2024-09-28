@@ -10,7 +10,7 @@ type SideMenuProps = {
 const SideMenu = ({ text, path, icon }: SideMenuProps) => {
   return (
     <Link
-      href={`/${path}`}
+      href={`/dashboard/${path}`}
       className="flex items-center gap-2 text-slate-500 px-2 py-2 hover:bg-red-100 hover:rounded-md hover:text-red-900 hover:font-semibold"
     >
       {icon} {text}

@@ -42,7 +42,7 @@ const SidebarViewPage = () => {
         <div className="flex flex-col gap-1">
           <SideMenu
             text="Dashboard"
-            path="dashboard"
+            path=""
             icon={<LuHome size={16} />}
           />
 
