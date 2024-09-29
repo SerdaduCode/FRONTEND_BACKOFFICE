@@ -7,13 +7,13 @@ const Layout = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="bg-slate-100 flex h-[100vh]">
-      <div className="hidden md:block h-[100vh]">
+    <div className="bg-stone-100 flex h-full w-full">
+      <div className="hidden md:block">
         <SidebarViewPage />
       </div>
-      <div className="p-10 h-full w-full md:max-w-full">
+      <main className="p-10 h-full w-full md:max-w-full">
         {children}
-      </div>
+      </main>
     </div>
   );
 };

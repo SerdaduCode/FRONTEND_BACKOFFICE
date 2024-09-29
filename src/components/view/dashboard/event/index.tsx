@@ -1,10 +1,16 @@
 import React from 'react';
 import Layout from '@/components/Layout';
+import HeaderMenu from '@/components/UI/HeaderMenu';
+import { LuCalendar } from 'react-icons/lu';
 
 const DashboardEventPageView = () => {
   return (
     <Layout>
-      <h1>Event</h1>
+      <HeaderMenu
+        icon={<LuCalendar size={24} />}
+        title="Event"
+        subtitle="Event History"
+      />
     </Layout>
   );
 };

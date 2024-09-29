@@ -1,10 +1,16 @@
 import React from 'react';
 import Layout from '@/components/Layout';
+import HeaderMenu from '@/components/UI/HeaderMenu';
+import { LuClipboardCheck } from 'react-icons/lu';
 
 const DashboardProjectPageView = () => {
   return (
     <Layout>
-      <h1>Project</h1>
+      <HeaderMenu
+        icon={<LuClipboardCheck size={24} />}
+        title="Project"
+        subtitle="All Project"
+      />
     </Layout>
   );
 };
