@@ -7,7 +7,7 @@ const Layout = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="bg-stone-100 flex h-full w-full">
+    <div className="bg-stone-50 flex h-full w-full">
       <div className="hidden md:block">
         <SidebarViewPage />
       </div>

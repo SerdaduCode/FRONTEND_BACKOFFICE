@@ -2,10 +2,10 @@ import React from "react";
 import { LuUserPlus2 } from "react-icons/lu";
 import Layout from "@/components/Layout";
 import HeaderMenu from "@/components/UI/HeaderMenu";
+import Avatar from "@/components/UI/Avatar";
 
 const DashboardMemberPageView = (props: any) => {
   const { members } = props;
-
   return (
     <Layout>
       <HeaderMenu
@@ -13,77 +13,114 @@ const DashboardMemberPageView = (props: any) => {
         title="Member"
         subtitle="Semua Anggota"
       />
-      <div>
-        <div className="flex flex-col">
-          <div className="-m-1.5 overflow-x-auto">
-            <div className="p-1.5 min-w-full inline-block align-middle">
-              <div className="overflow-hidden">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-                  <thead>
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                      >
-                        Nama Anggota
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                      >
-                        Role
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                      >
-                        Email
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                      >
-                        No.Telp
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                      >
-                        Aksi
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-                    {members?.users.map((member: any) => (
-                      <tr>
-                        <td className="px-6 py-4 text-start text-sm font-medium text-neutral-800">
-                          {member.name}
-                        </td>
-                        <td className="px-6 py-4 text-start text-sm font-medium text-neutral-800">
-                          {member.structure_role}
-                        </td>
-                        <td className="px-6 py-4 text-start text-sm font-medium text-neutral-800">
-                          {member.email}
-                        </td>
-                        <td className="px-6 py-4 text-end text-sm font-medium text-neutral-800">
-                          {member.phone}
-                        </td>
-                        <td className="px-6 py-4 text-end text-sm font-medium text-neutral-800">
-                          <a
-                            href="#"
-                            className="text-red-500 hover:text-red-700"
-                          >
-                            Hapus
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div className="relative overflow-x-auto border-2 border-slate-200 rounded-lg mt-4">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Nama Anggota
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Role
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Team
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Email
+              </th>
+              <th scope="col" className="pl-6 py-3">
+                No.Telpon
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className=" dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center gap-2"
+              >
+                <Avatar size={40} />
+                alfonso de albuquerque
+              </th>
+              <td className="px-6 py-4">Game Developer</td>
+              <td className="px-6 py-4"> Product</td>
+              <td className="px-6 py-4">alfonso@mail.com</td>
+              <td className="px-6 py-4">08123456732</td>
+              <td className="pr-4 text-right">
+                <a
+                  href="#"
+                  className="font-medium text-white mr-4 bg-green-500 px-4 py-1 rounded-md"
+                >
+                  Update
+                </a>
+                <a
+                  href="#"
+                  className="font-medium text-white bg-red-500 px-4 py-1 rounded-md"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+
+            <tr className=" dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center gap-2"
+              >
+                <Avatar size={40} />
+                alfonso de albuquerque
+              </th>
+              <td className="px-6 py-4">Game Developer</td>
+              <td className="px-6 py-4"> Product</td>
+              <td className="px-6 py-4">alfonso@mail.com</td>
+              <td className="px-6 py-4">08123456732</td>
+              <td className="pr-4 text-right">
+                <a
+                  href="#"
+                  className="font-medium text-white mr-4 bg-green-500 px-4 py-1 rounded-md"
+                >
+                  Update
+                </a>
+                <a
+                  href="#"
+                  className="font-medium text-white bg-red-500 px-4 py-1 rounded-md"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+
+            <tr className=" dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center gap-2"
+              >
+                <Avatar size={40} />
+                alfonso de albuquerque
+              </th>
+              <td className="px-6 py-4">Game Developer</td>
+              <td className="px-6 py-4"> Product</td>
+              <td className="px-6 py-4">alfonso@mail.com</td>
+              <td className="px-6 py-4">08123456732</td>
+              <td className="pr-4 text-right">
+                <a
+                  href="#"
+                  className="font-medium text-white mr-4 bg-green-500 px-4 py-1 rounded-md"
+                >
+                  Update
+                </a>
+                <a
+                  href="#"
+                  className="font-medium text-white bg-red-500 px-4 py-1 rounded-md"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </Layout>
   );
