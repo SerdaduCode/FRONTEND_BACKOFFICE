@@ -105,10 +105,9 @@ const RegisterViewPage = () => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <Link href="dashboard">
+          <Link href="/dashboard/member">
             <BiArrowBack className="text-3xl" />
           </Link>
-
           <button
             type="submit"
             className="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800"
