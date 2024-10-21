@@ -24,7 +24,7 @@ const SidebarViewPage = () => {
 
   return (
     <>
-      <aside className="bg-white flex flex-col justify-around h-[100vh] w-52 px-4 sticky top-0">
+      <aside className="bg-white flex flex-col justify-around h-[100vh] w-52 px-4 sticky top-0 shadow-sm">
         <div className="flex flex-col items-center text-center">
           <Image
             className="rounded-full mb-10"

@@ -15,7 +15,7 @@ import welcomeIcon from '@/../public/images/welcome-icon.svg';
 const DashboardViewPage = () => {
   return (
     <Layout>
-      <article className="bg-white w-full px-12 py-16 rounded-xl mb-16 flex justify-between relative">
+      <article className="bg-white w-full px-12 py-16 rounded-xl mb-16 flex justify-between relative shadow-sm">
         <div>
           <h1 className="text-3xl font-bold mb-3">
             Welcome, Mang Syaid 👋
