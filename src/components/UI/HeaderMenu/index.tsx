@@ -1,16 +1,14 @@
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 type HeaderMenuProps = {
   icon: React.ReactNode;
   title: string;
   subtitle: string;
+  linkTo?: string;
 };
 
-const HeaderMenu = ({
-  icon,
-  title,
-  subtitle,
-}: HeaderMenuProps) => {
+const HeaderMenu = ({ icon, title, subtitle, linkTo }: HeaderMenuProps) => {
   return (
     <>
       <div>
@@ -31,7 +29,11 @@ const HeaderMenu = ({
             <option value="">Z</option>
           </select>
           <button className="bg-yellow-400 px-4 rounded-md">
-            Add {title}
+            {linkTo ? (
+              <Link href={linkTo}>Add {title}</Link>
+            ) : (
+              <div>Add {title}</div>
+            )}
           </button>
         </div>
       </div>
