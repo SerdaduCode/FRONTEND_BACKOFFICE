@@ -3,12 +3,12 @@ import StatusProject from '../StatusProject';
 import Link from 'next/link';
 import Avatar from '../Avatar';
 
-const CardProject = ({ status }: { status?: string }) => {
+const CardProject = ({ name, status }: { name?: string, status?: string }) => {
   return (
     <>
       <div className="flex justify-between">
         <p className="font-bold text-xl">
-          Serdadu Backoffice
+          {name}
         </p>
         <Link href="">
           <LuArrowRight />
