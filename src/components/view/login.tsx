@@ -20,10 +20,19 @@ const LoginViewPage = () => {
     };
     try {
       const result = await authService.loginMember(data);
+      const userData = {
+        email: result.data.data.email,
+        name: result.data.data.name,
+        role: result.data.data.structure_role,
+      };
       if (result.status === 200) {
         alert("login success");
         setIsLoading(false);
         Cookies.set("token", result.data.token, {
+          expires: 1,
+          sameSite: "strict",
+        });
+        Cookies.set("user", JSON.stringify(userData), {
           expires: 1,
           sameSite: "strict",
         });

@@ -1,5 +1,4 @@
-import React from 'react';
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import {
   LuHome,
   LuUserPlus2,
@@ -8,16 +7,24 @@ import {
   LuCalendar,
   LuSettings,
   LuLogOut,
-} from 'react-icons/lu';
-import Image from 'next/image';
-import SideMenu from '@/components/UI/SideMenu';
+} from "react-icons/lu";
+import Image from "next/image";
+import SideMenu from "@/components/UI/SideMenu";
+import { useEffect, useState } from "react";
 
 const SidebarViewPage = () => {
+  const [user, setUser] = useState<any>({});
+  useEffect(() => {
+    const dataUser = JSON.parse(Cookies.get("user") || "{}");
+    setUser(dataUser);
+  },[])
+
   const handleLogout = () => {
-    Cookies.remove('token');
-    window.location.href = '/login';
-    const callbackUrl = new URL(window.location.href)
-      .pathname;
+    Cookies.remove("token");
+    Cookies.remove("user");
+
+    window.location.href = "/login";
+    const callbackUrl = new URL(window.location.href).pathname;
     const params = new URLSearchParams({ callbackUrl });
     window.location.href = `/login?${params.toString()}`;
   };
@@ -33,18 +40,13 @@ const SidebarViewPage = () => {
             width={100}
             height={100}
           />
-          <p className="text-lg font-bold">Mang Yoga</p>
-          <p className="text-base text-slate-500">
-            Operation Team
-          </p>
+          <p className="text-lg font-bold">{user?.name}</p>
+          <p className="text-base text-slate-500">{user?.role}</p>
+          
         </div>
 
         <div className="flex flex-col gap-1">
-          <SideMenu
-            text="Dashboard"
-            path=""
-            icon={<LuHome size={16} />}
-          />
+          <SideMenu text="Dashboard" path="" icon={<LuHome size={16} />} />
 
           <SideMenu
             text="Member"
@@ -52,11 +54,7 @@ const SidebarViewPage = () => {
             icon={<LuUserPlus2 size={16} />}
           />
 
-          <SideMenu
-            text="Group"
-            path="group"
-            icon={<LuUsers2 size={16} />}
-          />
+          <SideMenu text="Group" path="group" icon={<LuUsers2 size={16} />} />
 
           <SideMenu
             text="Project"
@@ -64,11 +62,7 @@ const SidebarViewPage = () => {
             icon={<LuClipboardCheck size={16} />}
           />
 
-          <SideMenu
-            text="Event"
-            path="event"
-            icon={<LuCalendar size={16} />}
-          />
+          <SideMenu text="Event" path="event" icon={<LuCalendar size={16} />} />
 
           <SideMenu
             text="Settings"
