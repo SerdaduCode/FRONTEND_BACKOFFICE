@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LuUserPlus2 } from "react-icons/lu";
 import Layout from "@/components/Layout";
 import HeaderMenu from "@/components/UI/HeaderMenu";
-import Avatar from "@/components/UI/Avatar";
 import Pagination from "@/components/Layout/Pagination";
 import { useRouter } from "next/router";
 import CardDepartement from "@/components/UI/CardDepartement";
-import DetailGroup from "./detail";
 import AddDepartement from "./AddGroup";
 
 type propsType = {
@@ -34,24 +32,23 @@ const DashboardGroupPageView = (props: propsType) => {
       <Layout>
         <HeaderMenu
           icon={<LuUserPlus2 size={24} />}
-          title="Group"
-          subtitle="Semua Group"
-          // linkTo="/dashboard/register"
+          title="Departement"
+          subtitle="Semua Departement"
+          onClick={() => setModalAddDepartement(true)}
         />
-        <button className="bg-yellow-500" onClick={() => setModalAddDepartement(true)} >Add Departement</button>
         <div className="grid grid-cols-3 gap-4 py-5">
-      {dataDepartement.map((departement: Departement) => {
-        return (
-          <CardDepartement
-            key={departement.id}
-            name={departement.name}
-            description={departement.desc}
-            id={departement.id}
-            members={departement.members}
-            setDataDepartement={setDataDepartement}
-          />
-        );
-      })}
+          {dataDepartement?.map((departement: Departement) => {
+            return (
+              <CardDepartement
+                key={departement.id}
+                name={departement.name}
+                description={departement.desc}
+                id={departement.id}
+                members={departement.members}
+                setDataDepartement={setDataDepartement}
+              />
+            );
+          })}
         </div>
         <div className="flex py-3">
           <Pagination

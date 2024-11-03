@@ -20,17 +20,17 @@ const AddDepartement = (props: propsTypes) => {
         name: form.namaDepartement.value,
         desc: form.description.value,
       };
-      console.log(data);
       const result = await departementService.createDepartment(data);
-      if (result.status === 200) {
+      if (result) {
         setIsLoading(false);
         const { data } = await departementService.getDepartements();
         setDataDepartement(data.data);
+        form.reset();
         setModalAddDepartement(false);
       }
     } catch (error) {
       setIsLoading(false);
-    }finally{
+    } finally {
       setIsLoading(false);
     }
   };

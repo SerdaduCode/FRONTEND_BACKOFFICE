@@ -5,31 +5,36 @@ import DetailGroup from "@/components/view/dashboard/group/detail";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import UpdateDepartement from "@/components/view/dashboard/group/UpdateGroup";
+import DeleteDepartement from "@/components/view/dashboard/group/DeleteGroup";
 
 type propsTypes = {
   name: string;
   description: string;
   id?: string;
   members?: any;
-  setDataDepartement?: Dispatch<SetStateAction<any>>;
+  setDataDepartement: Dispatch<SetStateAction<any>>;
 };
 
-const CardDepartement = ({ name, description, id, members, setDataDepartement }: propsTypes) => {
+const CardDepartement = ({
+  name,
+  description,
+  id,
+  members,
+  setDataDepartement,
+}: propsTypes) => {
   const [modalDetailDepartement, setModalDetailDepartement] = useState(false);
   const [updatedDepartement, setUpdatedDepartement] = useState({});
   const [deletedDepartement, setDeletedDepartement] = useState({});
 
   return (
     <>
-      <div
-        onClick={() => setModalDetailDepartement(true)}
-        className="bg-white p-6 rounded-xl cursor-pointer w-full hover:shadow hover:bg-slate-50  lg:mb-0 mb-4"
-      >
-        <div className="flex justify-between">
+      <div className="bg-white p-6 rounded-xl w-full hover:shadow hover:bg-slate-50  lg:mb-0 mb-4">
+        <div
+          onClick={() => setModalDetailDepartement(true)}
+          className="flex justify-between"
+        >
           <p className="font-bold text-xl">{name}</p>
-          <button
-            className="flex justify-center items-center h-8 w-8"
-          >
+          <button className="flex justify-center items-center h-8 w-8">
             <LuArrowRight size={25} />
           </button>
         </div>
@@ -48,16 +53,15 @@ const CardDepartement = ({ name, description, id, members, setDataDepartement }:
           <div className="flex gap-1">
             <button
               className="font-medium text-white bg-green-500 rounded-full px-4 py-4 shadow-md"
-              //   onClick={() => setUpdatedDepartement()}
+              onClick={() => setUpdatedDepartement({ id, name, description })}
             >
               <FaEdit />
             </button>
             <button
               className="font-medium text-white bg-red-500 px-4 py-4 rounded-full shadow-md"
-              //   onClick={() => setDeletedDepartement(departement)}
+              onClick={() => setDeletedDepartement({ id, name })}
             >
-              <MdDelete/>
-
+              <MdDelete />
             </button>
           </div>
         </div>
@@ -69,7 +73,7 @@ const CardDepartement = ({ name, description, id, members, setDataDepartement }:
           members={members}
         />
       )}
-         {/* {Object.keys(updatedDepartement).length > 0 && (
+      {Object.keys(updatedDepartement).length > 0 && (
         <UpdateDepartement
           updatedDepartement={updatedDepartement}
           setUpdatedDepartement={setUpdatedDepartement}
@@ -77,12 +81,12 @@ const CardDepartement = ({ name, description, id, members, setDataDepartement }:
         />
       )}
       {Object.keys(deletedDepartement).length > 0 && (
-        <DeleteMember
+        <DeleteDepartement
           deletedDepartement={deletedDepartement}
           setDeletedDepartement={setDeletedDepartement}
           setDataDepartement={setDataDepartement}
         />
-      )} */}
+      )}
     </>
   );
 };

@@ -4,15 +4,15 @@ import departementService from "@/services/departement";
 import { useState } from "react";
 
 type propsTypes = {
-  UpdatedDepartement: any;
-  setUpdateddepartement: any;
+  updatedDepartement: any;
+  setUpdatedDepartement: any;
   setDataDepartement: any;
 };
 const UpdateDepartement = (props: propsTypes) => {
-  const { setUpdateddepartement, setDataDepartement,UpdatedDepartement } = props;
+  const { setUpdatedDepartement, setDataDepartement, updatedDepartement } =
+    props;
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e: any) => {
+  const handleUpdate = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -21,13 +21,15 @@ const UpdateDepartement = (props: propsTypes) => {
         name: form.namaDepartement.value,
         desc: form.description.value,
       };
-      console.log(data);
-      const result = await departementService.createDepartment(data);
-      if (result.status === 200) {
+      const result = await departementService.updateDepartment(
+        updatedDepartement.id,
+        data
+      );
+      if (result) {
         setIsLoading(false);
         const { data } = await departementService.getDepartements();
         setDataDepartement(data.data);
-        setUpdateddepartement(false);
+        setUpdatedDepartement(false);
       }
     } catch (error) {
       setIsLoading(false);
@@ -36,13 +38,13 @@ const UpdateDepartement = (props: propsTypes) => {
     }
   };
   return (
-    <Modal onClose={() => setUpdateddepartement(false)}>
+    <Modal onClose={() => setUpdatedDepartement({})}>
       <div className="flex items-center justify-center lg:items-start lg:justify-start">
         <p className="my-9 inline-block bg-clip-text text-3xl font-bold ">
-          Add departement
+          Updated Departement
         </p>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleUpdate}>
         <div>
           <Input
             name="namaDepartement"
@@ -50,10 +52,12 @@ const UpdateDepartement = (props: propsTypes) => {
             required
             title="Nama Departement"
             type="text"
+            defaultValue={updatedDepartement?.name}
           />
           <div className="my-3">
             <label htmlFor="">Deskripsi</label>
             <textarea
+              defaultValue={updatedDepartement?.description}
               name="description"
               className="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm "
               rows={3}
@@ -67,7 +71,7 @@ const UpdateDepartement = (props: propsTypes) => {
             type="submit"
             className="font-medium text-white mr-4 bg-slate-600 px-4 py-1 rounded-md"
           >
-            {isLoading ? "Loading..." : "Add"}
+            {isLoading ? "Loading..." : "Update"}
           </button>
         </div>
       </form>

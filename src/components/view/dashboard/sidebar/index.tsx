@@ -17,7 +17,7 @@ const SidebarViewPage = () => {
   useEffect(() => {
     const dataUser = JSON.parse(Cookies.get("user") || "{}");
     setUser(dataUser);
-  },[])
+  }, []);
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -42,7 +42,6 @@ const SidebarViewPage = () => {
           />
           <p className="text-lg font-bold">{user?.name}</p>
           <p className="text-base text-slate-500">{user?.role}</p>
-          
         </div>
 
         <div className="flex flex-col gap-1">
