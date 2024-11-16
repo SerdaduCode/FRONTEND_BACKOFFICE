@@ -1,14 +1,21 @@
 import Link from "next/link";
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 type HeaderMenuProps = {
   icon: React.ReactNode;
   title: string;
   subtitle: string;
   linkTo?: string;
+  onClick?: Dispatch<SetStateAction<any>>;
 };
 
-const HeaderMenu = ({ icon, title, subtitle, linkTo }: HeaderMenuProps) => {
+const HeaderMenu = ({
+  icon,
+  title,
+  subtitle,
+  linkTo,
+  onClick,
+}: HeaderMenuProps) => {
   return (
     <>
       <div>
@@ -32,7 +39,7 @@ const HeaderMenu = ({ icon, title, subtitle, linkTo }: HeaderMenuProps) => {
             {linkTo ? (
               <Link href={linkTo}>Add {title}</Link>
             ) : (
-              <div>Add {title}</div>
+              <div onClick={onClick}>Add {title}</div>
             )}
           </button>
         </div>
