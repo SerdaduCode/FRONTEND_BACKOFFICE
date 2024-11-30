@@ -3,18 +3,26 @@ import StatusProject from '../StatusProject';
 import Link from 'next/link';
 import Avatar from '../Avatar';
 
-const CardProject = ({ name, status }: { name?: string, status?: string }) => {
+const CardProject = ({
+  name,
+  status,
+  endDate,
+}: {
+  name?: string;
+  status?: string;
+  endDate?: string;
+}) => {
   return (
     <>
       <div className="flex justify-between">
-        <p className="font-bold text-xl">
-          {name}
-        </p>
+        <p className="font-bold text-xl">{name}</p>
         <Link href="">
           <LuArrowRight />
         </Link>
       </div>
       <div className="flex justify-between my-5">
+        {endDate && <span>{endDate}</span>}
+
         <span className="py-1 px-3 bg-slate-200 rounded-md text-slate-800 text-sm">
           Programming
         </span>

@@ -20,7 +20,10 @@ const DashboardProjectPageView = (props: any) => {
         <div className="lg:flex justify-between gap-6">
           {projects.map((project) => (
             <CardWrapper key={project.id}>
-              <CardProject name={project.name} />
+              <CardProject
+                name={project.name}
+                endDate={project.end_date}
+              />
             </CardWrapper>
           ))}
         </div>
