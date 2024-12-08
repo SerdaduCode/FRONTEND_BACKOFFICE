@@ -1,11 +1,11 @@
 import Input from "@/components/UI/Input";
 import Modal from "@/components/UI/Modal";
 import departementService from "@/services/departement";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type propsTypes = {
-  setModalAddDepartement: any;
-  setDataDepartement: any;
+  setModalAddDepartement: Dispatch<SetStateAction<boolean>>;
+  setDataDepartement: Dispatch<SetStateAction<any>>;
 };
 const AddDepartement = (props: propsTypes) => {
   const { setModalAddDepartement, setDataDepartement } = props;

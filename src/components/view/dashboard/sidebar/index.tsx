@@ -11,9 +11,11 @@ import {
 import Image from "next/image";
 import SideMenu from "@/components/UI/SideMenu";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const SidebarViewPage = () => {
   const [user, setUser] = useState<any>({});
+  const pathname = usePathname();
   useEffect(() => {
     const dataUser = JSON.parse(Cookies.get("user") || "{}");
     setUser(dataUser);
@@ -40,7 +42,7 @@ const SidebarViewPage = () => {
             width={100}
             height={100}
           />
-          <p className="text-lg font-bold">{user?.name}</p>
+          <p className="text-lg font-bold uppercase">{user?.name}</p>
           <p className="text-base text-slate-500">{user?.role}</p>
         </div>
 

@@ -33,7 +33,7 @@ const DashboardGroupPageView = (props: propsType) => {
         <HeaderMenu
           icon={<LuUserPlus2 size={24} />}
           title="Departement"
-          subtitle="Semua Departement"
+          subtitle="All Departement"
           onClick={() => setModalAddDepartement(true)}
         />
         <div className="grid grid-cols-3 gap-4 py-5">

@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import {
-  LuUserPlus,
-  LuUsers,
-  LuCalendarClock,
-} from 'react-icons/lu';
-import Layout from '@/components/Layout';
-import CardWrapper from '@/components/UI/CardWrapper';
-import Card from '@/components/UI/Card';
-import Image from 'next/image';
-import CardProject from '@/components/UI/CardProject';
-import CardMember from '@/components/UI/CardMember';
-import welcomeIcon from '@/../public/images/welcome-icon.svg';
-import Cookies from 'js-cookie';
+import React, { useEffect, useState } from "react";
+import { LuUserPlus, LuUsers, LuCalendarClock } from "react-icons/lu";
+import Layout from "@/components/Layout";
+import CardWrapper from "@/components/UI/CardWrapper";
+import Card from "@/components/UI/Card";
+import Image from "next/image";
+import CardProject from "@/components/UI/CardProject";
+import CardMember from "@/components/UI/CardMember";
+import welcomeIcon from "@/../public/images/welcome-icon.svg";
+import Cookies from "js-cookie";
 
-const DashboardViewPage = ({ widgetCount, projects }) => {
+const DashboardViewPage = ({ widgetCount, projects }: any) => {
   const [user, setUser] = useState<any>({});
   useEffect(() => {
-    const dataUser = JSON.parse(
-      Cookies.get('user') || '{}',
-    );
+    const dataUser = JSON.parse(Cookies.get("user") || "{}");
     setUser(dataUser);
   }, []);
   return (
@@ -26,15 +20,10 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
       <article className="bg-white w-full px-12 py-16 rounded-xl mb-16 flex justify-between relative shadow-sm">
         <div>
           <h1 className="text-3xl font-bold mb-3">
-            Welcome, Mang{' '}
-            <span className="text-red-500 uppercase">
-              {user?.name}
-            </span>{' '}
-            👋
+            Welcome, Bro{" "}
+            <span className="text-red-500 uppercase">{user?.name}</span> 👋
           </h1>
-          <p className="text-lg text-slate-500">
-            Sunday, September 20 1945
-          </p>
+          <p className="text-lg text-slate-500">Sunday, September 20 1945</p>
         </div>
 
         <Image
@@ -48,9 +37,7 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
       <article className="mb-16">
         <div className="flex gap-10 mb-6 items-center">
           <h1 className="text-2xl font-bold">Statistics</h1>
-          <p className="text-base font-bold text-slate-500">
-            Januari 1945
-          </p>
+          <p className="text-base font-bold text-slate-500">Januari 1945</p>
         </div>
 
         <div className="lg:flex justify-between gap-6">
@@ -74,9 +61,7 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
 
           <CardWrapper>
             <Card
-              icon={
-                <LuCalendarClock size={50} color="white" />
-              }
+              icon={<LuCalendarClock size={50} color="white" />}
               title="Total Event"
               total={widgetCount?.eventCount}
               totalDesc="Events"
@@ -87,18 +72,15 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
 
       <article className="mb-16">
         <div className="flex gap-10 mb-6 items-center">
-          <h1 className="text-2xl font-bold">
-            Latest Project
-          </h1>
-          <p className="text-base font-bold text-slate-500">
-            Januari 1945
-          </p>
+          <h1 className="text-2xl font-bold">Latest Project</h1>
+          <p className="text-base font-bold text-slate-500">Januari 1945</p>
         </div>
         <div className="lg:flex justify-between gap-6">
-          {projects?.map((project) => (
+          {projects?.map((project: any) => (
             <CardWrapper key={project.id}>
               <CardProject
                 name={project.name}
+                endDate={project.end_date}
                 status="Selesai"
               />
             </CardWrapper>
@@ -109,9 +91,7 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
       <article className="mb-16">
         <div className="flex gap-10 mb-6 items-center">
           <h1 className="text-2xl font-bold">Member</h1>
-          <p className="text-base font-bold text-slate-500">
-            Development Team
-          </p>
+          <p className="text-base font-bold text-slate-500">Development Team</p>
         </div>
 
         <div className="lg:flex">
@@ -131,12 +111,9 @@ const DashboardViewPage = ({ widgetCount, projects }) => {
           <CardWrapper>
             <div className="flex justify-between">
               <div>
-                <h1 className="text-2xl font-bold">
-                  Respon Mereka
-                </h1>
+                <h1 className="text-2xl font-bold">Respon Mereka</h1>
                 <p className="text-slate-500 mt-2 mb-5">
-                  Beri respon kepada calon anggota divisi
-                  programming
+                  Beri respon kepada calon anggota divisi programming
                 </p>
                 <button className="bg-black text-white py-1 px-14 rounded-lg">
                   Lihat Mereka
